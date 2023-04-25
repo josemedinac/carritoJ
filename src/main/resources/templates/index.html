@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Insert title here</title>
+  <link th:href="@{/css/estilos.css}" rel="stylesheet" />
+</head>
+<body>
+  <header class="header">
+    <nav class="navega">
+      <ul class="navlink">
+        <li><a href="#">Ventas</a>
+          <ul class="navlink submenu">
+            <li><a href="#">Reporte de ventas</a></li>
+            <li><a href="#">Registrar venta</a></li>
+          </ul>
+        </li>
+        <li><a th:href="@{/all_producto}">Productos</a></li>      
+        <li><a href="#">Usuarios</a></li>
+      </ul>
+    </nav>
+    <h2 class="titulo">Carrito de compras</h2>
+  </header>
+</body>
+</html>
