@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Insert title here</title>
+</head>
+
+<body>
+    <div>
+        <form th:action="@{/save_producto}" th:object="${productos}" class="">
+            <div>
+                <label for="" class="">Nombre</label>
+                <input type="text" th:field="*{nombre}" required/>
+            </div>
+            <div>
+                <label for="" class="">Descripcion</label>
+                <input type="text" th:field="*{descripcion}" required />
+            </div>
+            <div>
+                <label for="" class="">Precio</label>
+                <input type="text" th:field="*{precio}" required>
+            </div>
+            <div>
+                <label for="" class="">Iva</label>
+                <select name="" id="" th:field="*{iva}">
+                    <option value="0">0</option>
+                    <option value="5">5</option>
+                    <option value="19">19</option>
+                </select>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
+
+<!--<center>
+    <div class="container">
+        <br>
+        <h2 style="text-align: center; font-size: 38px;">Agregar
+            producto</h2>
+        <br>
+        <form class="form_simple mb-6 max-w-00 max-h-300" action="#"
+            th:action="@{/save_producto}" th:object="${producto}" method="POST">
+
+                    <div class="mb-3">
+                        <label class="form-label">Estado</label> <select
+                            class="form-control" th:field="*{estado}" id="est" required>
+                            <option value="Disponible">Disponible</option>
+                            <option value="Inhabilitado">Inhabilitado</option>
+                        </select>
+                        <div class="valid-feedback"></div>
+                        <div class="invalid-feedback">Por favor, seleccione un
+                            Estado válido.</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Precio</label> <input type="number"
+                            step="any" class="form-control" id="prec" th:field="*{precio}"
+                            required min="50"/ >
+                        <div class="valid-feedback"></div>
+                        <div class="invalid-feedback">Por favor, ingrese un Precio
+                            válido.</div>
+                    </div>
+
+                </div>
+                <div>
+                    <div class="mb-3">
+                        <label class="form-label">Descuento</label> <input type="number"
+                            class="form-control" min="0" max="100" id="desc"
+                            th:field="*{descuento}" required />
+                        <div class="valid-feedback"></div>
+                        <div class="invalid-feedback">Por favor, ingrese un
+                            Descuento válido.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">IVA</label> <select
+                            class="form-control" th:field="*{iva}" id="iva" required>
+                            <option value="0">0%</option>
+                            <option value="5">5%</option>
+                            <option value="19">19%</option>
+                        </select>
+                        <div class="valid-feedback"></div>
+                        <div class="invalid-feedback">Por favor, seleccione un IVA
+                            válido.</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="tip_doc">Proveedor</label> <select
+                            class="form-control" th:field="*{proveedor.id}" id="prov"
+                            required>
+                            <div th:each="proveedor : ${proveedores}"
+                                th:if="${proveedor.estado == 'Disponible'}">
+                                <option th:value="${proveedor.id}"
+                                    th:text="${proveedor.nombre}"></option>
+                            </div>
+                        </select>
+                        <div class="valid-feedback"></div>
+                        <div class="invalid-feedback">Por favor, seleccione un
+                            Proveedor.</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="tip_doc">Categoria</label> <select
+                            class="form-control" th:field="*{categoria.id}" id="cat"
+                            required>
+                            <div th:each="cat : ${categorias}"
+                                th:if="${cat.estado == 'Disponible'}">
+                                <option th:value="${cat.id}" th:text="${cat.nombre}"></option>
+                            </div>
+                        </select>
+                        <div class="valid-feedback"></div>
+                        <div class="invalid-feedback">Por favor, seleccione una
+                            Categoria.</div>
+                    </div>
+
+                    <script>
+                        var form = document.querySelector('form');
+                        var inputs = document
+                                .querySelectorAll("#nom, #est, #prec, #desc, #desc, #iva, #prov, #cat, #tip");
+
+                        inputs.forEach(function(input) {
+                            input.addEventListener("blur", function(event) {
+                                if (!input.checkValidity()) {
+                                    input.classList.add("is-invalid");
+                                    input.nextElementSibling.classList
+                                            .remove("valid-feedback");
+                                } else {
+                                    input.classList.remove("is-invalid");
+                                    input.nextElementSibling.classList
+                                            .add("valid-feedback");
+                                }
+                                form.classList.add('was-validated')
+                            }, false)
+                        });
+                    </script>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <br> <br>
+                <center>
+                    <button type="submit" class="btn btn-primary mb-3">Guardar</button>
+                </center>
+            </div>
+        </form>
+    </div>

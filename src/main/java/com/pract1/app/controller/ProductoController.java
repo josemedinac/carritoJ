@@ -23,30 +23,30 @@ public class ProductoController {
 		return "productos/all";
 	}
 
-	@GetMapping("/map_product")
+	@GetMapping("/map_producto")
 	public String mapProductos(Model modelo) {
 		Producto product = new Producto();
 		modelo.addAttribute("producto", product);
-		return "productos/crear";
+		return "productos/create";
 	}
 
-	@GetMapping("/get_product/{id}")
+	@GetMapping("/get_producto/{id}")
 	public String getByIdProductos(@PathVariable Long id, Model modelo) {
 		Producto product = this.prodimpl.findbyId(id);
 		modelo.addAttribute("producto", product);
 		return "productos/editar";
 	}
 
-	@PostMapping("/save_product")
+	@PostMapping("/save_producto")
 	public String updateProductos(@ModelAttribute("producto") Producto product) {
 		this.prodimpl.update(product);
 		return "redirect:/all_producto";
 	}
 
-	@GetMapping("/delete_product/{id}")
+	@GetMapping("/delete_producto/{id}")
 	public String deleteProductos(@PathVariable Long id) {
 		Producto product = this.prodimpl.findbyId(id);
 		this.prodimpl.update(product);
-		return "redirect:/all_productos";
+		return "redirect:/all_producto";
 	}
 }
